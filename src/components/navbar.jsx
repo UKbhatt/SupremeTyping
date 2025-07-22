@@ -14,9 +14,9 @@ export default function Navbar() {
   };
 
   return (
-<div className="w-full px-6 h-20 flex items-center justify-between bg-slate-800 text-white">
+    <div className="w-full px-6 h-20 flex items-center justify-between bg-slate-800 text-white">
       <div className="flex items-center text-xl gap-2">
-        <PiCrown className="text-yellow-300 text-4xl" />
+        <PiCrown className="text-yellow-300 text-4xl transition-transform duration-200 hover:scale-125" />
         <p>Supreme Typing</p>
       </div>
 
@@ -24,8 +24,7 @@ export default function Navbar() {
         onClick={handleClick}
         disabled={loading}
         className={`btn btn-sm text-white bg-gradient-to-r from-[#333] to-[#555] 
-          hover:from-[#444] hover:to-[#666] transition duration-200 ${
-            loading ? "opacity-70 cursor-not-allowed" : ""
+          hover:from-[#444] hover:to-[#666] transition duration-200 ${loading ? "opacity-70 cursor-not-allowed" : ""
           }`}
       >
         {loading ? (

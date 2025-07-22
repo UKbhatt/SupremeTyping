@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+
 export default function useTyping(targetText, duration = 10) {
     const [typedText, setTypedText] = useState("");
     const [currentIndex, setCurrentIndex] = useState(0);
