@@ -1,17 +1,18 @@
-import Navbar from './components/Navbar'
-import { faker } from '@faker-js/faker' 
-import './App.css'
-function App() {
+import Navbar from "./components/Navbar";
+import TypingBox from "./components/typingSpace";
+import getWords from "./utilities/getWords";
+import useTyping from "./hooks/useTyping";
+import "./App.css";
 
-  const words = faker.random.words(10) ; 
+const words = getWords(10);
+
+export default function App() {
+  const typingState = useTyping(words);
+
   return (
-    <>
-      <Navbar />
-      <div className="min-h-screen grid place-items-center font-mono tracking-wider bg-slate-800 text-yellow-500">
-      {words}
-      </div>
-    </>
-  )
+    <div className="min-h-screen flex flex-col font-mono bg-slate-800 text-yellow-500">
+        <Navbar />
+      <TypingBox words={words} state={typingState} />
+    </div>
+  );
 }
-
-export default App
