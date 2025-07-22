@@ -1,4 +1,4 @@
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar";
 import TypingBox from "./components/typingSpace";
 import getWords from "./utilities/getWords";
 import useTyping from "./hooks/useTyping";

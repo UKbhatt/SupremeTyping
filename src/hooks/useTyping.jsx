@@ -38,26 +38,26 @@ export default function useTyping(targetText, duration = 10) {
     }, [isRunning, timeRemaining]);
 
     const reset = (newText) => {
-        setText(newText); 
+        setText(newText);
         setTypedText("");
         setCurrentIndex(0);
         setCorrectChars(0);
-        setTimeRemaining(duration); 
+        setTimeRemaining(duration);
         setIsRunning(false);
     };
 
     return {
-      typedText,
-    currentIndex,
-    timeRemaining,
-    isRunning,
-    correctChars,
-    text,
-    wpm:
-      timeRemaining === 0
-        ? Math.round((correctChars / 5) / (duration / 60))
-        : 0,
-    handleKeyDown,
-    reset,
+        typedText,
+        currentIndex,
+        timeRemaining,
+        isRunning,
+        correctChars,
+        text,
+        wpm:
+            timeRemaining === 0
+                ? Math.round((correctChars / 5) / (duration / 60))
+                : 0,
+        handleKeyDown,
+        reset,
     };
 }
