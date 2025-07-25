@@ -4,20 +4,23 @@ import useTyping from "../hooks/useTyping";
 import getWords from "../utilities/getWords";
 
 export default function Setupbar() {
-    const [words] = useState(getWords(30)); 
+    const [wordCount, setWordCount] = useState(30); 
+    const [words, setWords] = useState(getWords(wordCount));
     const [showDivWord, setShowDivWord] = useState(false);
     const [showDivTime, setShowDivTime] = useState(false);
     const [timer, setTimer] = useState(10);
 
     const typingState = useTyping(words, timer);
 
-    const handleRestart = (wordCount) => {
-        const newWords = getWords(wordCount);
+    const handleRestart = (newCount) => {
+        const count = newCount || wordCount;
+        const newWords = getWords(count);
+        setWords(newWords);
         typingState.reset(newWords);
+        setWordCount(count); 
     };
 
     const handleTimeChange = (newTime) => {
-        // const newWords = getWords(word);
         typingState.reset(words);
         setTimer(newTime);
         typingState.updateTimer(newTime);

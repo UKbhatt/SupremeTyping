@@ -18,19 +18,23 @@ export default function TypingBox({ words, state, OnRestart }) {
     }
   }, []);
 
-  const handleCtrlEnter = (e) => {
-    if (e.ctrlKey && e.key === "Enter") {
-      OnRestart();
-    } else if (timeRemaining !== 0) {
-      handleKeyDown(e);
-    }
-  };
+const handleCtrlEnter = (e) => {
+  // console.log("Key Pressed:", e.key, "Ctrl:", e.ctrlKey); 
+
+  if (e.ctrlKey && e.key === "Enter") {
+    // console.log("Ctrl+Enter pressed");
+    OnRestart();
+  } else if (timeRemaining !== 0) {
+    handleKeyDown(e);
+  }
+};
 
   return (
     <div
       className="flex items-center justify-center h-screen outline-none"
       tabIndex={0}
       onKeyDown={handleCtrlEnter}
+      onClick={() => typingBoxRef.current?.focus()}
       ref={typingBoxRef}
     >
       {timeRemaining === 0 ? (
@@ -59,11 +63,11 @@ export default function TypingBox({ words, state, OnRestart }) {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          style={{color:"#7F8692"}}
+          style={{ color: "#7F8692" }}
         >
           <div className="absolute top-4 left-4">
             <motion.div
-              className="badge badge-primary text-sm md:text-lg p-3"
+              className="badge badge-primary badge-lg text-sm md:text-lg p-3"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -81,15 +85,13 @@ export default function TypingBox({ words, state, OnRestart }) {
               return (
                 <span
                   key={i}
-                  className={`transition-all duration-75 ${
-                    isCursor ? "underline decoration-yellow-400" : ""
-                  } ${
-                    isTyped
+                  className={`transition-all duration-75 ${isCursor ? "underline decoration-yellow-400" : ""
+                    } ${isTyped
                       ? isCorrect
                         ? "text-green-400"
                         : "text-red-400"
                       : ""
-                  }`}
+                    }`}
                 >
                   {char}
                 </span>

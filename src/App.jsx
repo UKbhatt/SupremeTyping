@@ -9,6 +9,5 @@ export default function App() {
       <Navbar />
       <Setupbar className="top-20" />
     </div>
-
   );
 }
