@@ -14,7 +14,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="w-full px-6 h-20 flex items-center justify-between bg-slate-800 text-white">
+    <div className="w-full px-6 h-20 flex items-center justify-between  text-white fixed">
       <div className="flex items-center text-xl gap-2">
         <PiCrown className="text-yellow-300 text-4xl transition-transform duration-200 hover:scale-125" />
         <p>Supreme Typing</p>
