@@ -19,10 +19,8 @@ export default function TypingBox({ words, state, OnRestart }) {
   }, []);
 
 const handleCtrlEnter = (e) => {
-  // console.log("Key Pressed:", e.key, "Ctrl:", e.ctrlKey); 
 
   if (e.ctrlKey && e.key === "Enter") {
-    // console.log("Ctrl+Enter pressed");
     OnRestart();
   } else if (timeRemaining !== 0) {
     handleKeyDown(e);
